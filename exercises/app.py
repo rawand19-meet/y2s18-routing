@@ -13,7 +13,13 @@ def home ():
 
 @app.route('/<int:student_id>')
 def yeah(student_id):
-	return render_template('student.html')
+	
+	student1 =session.query(
+		Student).filter_by(
+		student_id = student_id).first()
+	
+	return render_template('student.html' , n =student1)
+
 
 
 app.run(debug=True)
